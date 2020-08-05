@@ -8,9 +8,24 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var sort: Int = 0
+    
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        Text("SwiftUI")
+            .toolbar {
+                ToolbarItem(placement: .bottomBar) {
+                    Menu {
+                        Picker(selection: $sort, label: Text("Sorting options")) {
+                            Text("Size").tag(0)
+                            Text("Date").tag(1)
+                            Text("Location").tag(2)
+                        }
+                    }
+                    label: {
+                        Label("Sort", systemImage: "arrow.up.arrow.down")
+                    }
+                }
+            }
     }
 }
 
